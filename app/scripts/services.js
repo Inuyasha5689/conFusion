@@ -2,44 +2,51 @@
 
 angular.module('confusionApp')
     .constant("baseURL", "http://localhost:3000/")
-    .service('menuFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+    .service('menuFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
         // implement a function named getPromotion
         // that returns a selected promotion.
 
-        this.getPromotions = function () {
-            return $resource(baseURL + "promotions/:id", null, {'update': {method: 'PUT'}});
+        this.getPromotions = function() {
+            return $resource(baseURL + "promotions/:id", null);
         };
 
-        this.getDishes = function () {
-            return $resource(baseURL + "dishes/:id", null, {'update': {method: 'PUT'}});
+        this.getDishes = function() {
+            return $resource(baseURL + "dishes/:id", null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
         };
 
     }])
 
-    .factory('corporateFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+.factory('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-        var corpfac = {};
+    var corpfac = {};
 
-        // Implement two functions, one named getLeaders,
-        // the other named getLeader(index)
-        // Remember this is a factory not a service
+    // Implement two functions, one named getLeaders,
+    // the other named getLeader(index)
+    // Remember this is a factory not a service
 
-        corpfac.getLeaders = function () {
-            return $resource(baseURL + "leadership/:id", null, {'update': {method: 'PUT'}});
-        };
+    corpfac.getLeaders = function() {
+        return $resource(baseURL + "leadership/:id", null);
+    };
 
-        return corpfac;
+    return corpfac;
 
-    }])
+}])
 
-    .factory('feedbackFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
-        var feedfac = {};
+.factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    var feedfac = {};
 
-        feedfac.getFeedback = function () {
-            return $resource(baseURL + "feedback/:id", null, {'save': {method: 'POST'}});
-        };
+    feedfac.getFeedback = function() {
+        return $resource(baseURL + "feedback/:id", null, {
+            'save': {
+                method: 'POST'
+            }
+        });
+    };
 
-        return feedfac;
-    }])
-;
+    return feedfac;
+}]);

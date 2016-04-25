@@ -80,7 +80,7 @@ angular.module('confusionApp')
 
                 $scope.invalidChannelSelection = false;
                 $scope.feedback.mychannel = "";
-                feedbackFactory.getFeedback().save($scope.feedback);/////////////////////////////////
+                feedbackFactory.getFeedback().save($scope.feedback);
                 $scope.feedback = {
                     mychannel: "",
                     firstName: "",
